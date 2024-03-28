@@ -1,4 +1,13 @@
+import { v } from 'convex/values';
 import { mutation, query } from './_generated/server';
+
+export const get = query({
+  args: { id: v.id("chats") },
+  handler: async (ctx, args) => {
+    return await ctx.db
+      .get(args.id);
+  },
+})
 
 export const create = mutation({
   args: {},
@@ -31,7 +40,7 @@ export const list = query({
   handler: async (ctx) => {
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) {
-      throw new Error("Called list chats without logged in user!");
+      return [];
     }
 
     const user = await ctx.db
@@ -41,7 +50,7 @@ export const list = query({
       .unique();
 
     if (user === null) {
-      throw new Error("User not found");
+      return null;
     }
 
     return ctx.db
@@ -49,4 +58,20 @@ export const list = query({
       .withIndex("by_userId", (q) => q.eq("userId", user._id))
       .collect();
   }
+});
+
+export const rename = mutation({
+  args: { id: v.id("chats"), title: v.string() },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.id, {
+      title: args.title,
+    });
+  },
+});
+
+export const remove = mutation({
+  args: { id: v.id("chats") },
+  handler: async (ctx, args) => {
+    await ctx.db.delete(args.id);
+  },
 });

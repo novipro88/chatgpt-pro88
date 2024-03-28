@@ -6,7 +6,7 @@ import { ConvexClientProvider } from "@/providers/convex-client-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ChatPro",
+  title: "AIChatPro",
   description: "Chat with AI",
 };
 
