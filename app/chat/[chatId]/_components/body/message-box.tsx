@@ -8,7 +8,7 @@ interface MessageBoxProps {
 }
 
 export const MessageBox = ({ message, userImageUrl }: MessageBoxProps) => {
-  const nameString = message.role === "user" ? "You" : "TalkGPT";
+  const nameString = message.role === "user" ? "You" : "ChatBot";
   const imageUrl = message.role === "user" ? userImageUrl : "/logo.svg";
 
   return (

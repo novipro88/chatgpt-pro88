@@ -44,7 +44,7 @@ export const Form = ({ chatId }: FormProps) => {
   return (
     <div className="relative px-2 sm:px-12 md:px-52 lg:pr-[500px] 2xl:px-96 w-full bg-neutral-800">
       <Input
-        placeholder="Message TalkGPT..."
+        placeholder="Message ChatBot..."
         className="border-[1px] border-neutral-500 ring-none rounded-xl bg-inherit text-neutral-200 placeholder:text-neutral-400 h-12"
         value={message}
         onChange={(e) => setMessage(e.target.value)}

@@ -32,7 +32,7 @@ const Chat = ({ params }: ChatPageProps) => {
         <div className="w-full fixed bottom-0">
           <Form chatId={params.chatId} />
           <p className="w-full text-center text-xs text-neutral-400 my-2 lg:pr-[300px]">
-            TalkGPT could make errors. Consider checking important information.
+            ChatBot could make errors. Consider checking important information.
           </p>
         </div>
       </div>
